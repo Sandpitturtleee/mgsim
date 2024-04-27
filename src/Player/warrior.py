@@ -3,7 +3,7 @@ from abc import ABC
 from src.Player.character import Character
 
 
-class Mage(Character, ABC):
+class Warrior(Character, ABC):
     def __init__(self, lvl_p: int, lvl_e: int):
         super().__init__(lvl_p, lvl_e)
         self.str = self.calculate_str()
@@ -14,7 +14,9 @@ class Mage(Character, ABC):
         strength = 4
         for i in range(1,self.lvl_p):
             if i < 20:
-                strength += 1
+                strength += 4
+            else:
+                strength += 5
         return strength
 
     def calculate_agi(self):
@@ -26,9 +28,4 @@ class Mage(Character, ABC):
 
     def calculate_int(self):
         intellect = 3
-        for i in range(1, self.lvl_p):
-            if i < 20:
-                intellect += 3
-            else:
-                intellect += 5
         return intellect
