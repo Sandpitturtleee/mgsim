@@ -3,7 +3,7 @@ from abc import ABC
 from src.Player.character import Character
 
 
-class Warrior(Character, ABC):
+class BladeDancer(Character, ABC):
     def __init__(self, lvl_p: int, lvl_e: int):
         super().__init__(lvl_p, lvl_e)
         self.str = self.calculate_str()
@@ -13,17 +13,19 @@ class Warrior(Character, ABC):
     def calculate_str(self):
         strength = 4
         for i in range(1, self.lvl_p):
-            if i < 20:
-                strength += 4
+            if i < 20 or i % 2 == 0:
+                strength += 3
             else:
-                strength += 5
+                strength += 2
         return strength
 
     def calculate_agi(self):
         agility = 3
         for i in range(1, self.lvl_p):
-            if i < 20:
-                agility += 1
+            if i < 20 or i % 2 == 0:
+                agility += 2
+            else:
+                agility += 3
         return agility
 
     def calculate_int(self):

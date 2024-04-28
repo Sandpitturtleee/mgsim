@@ -12,7 +12,7 @@ class Hunter(Character, ABC):
 
     def calculate_str(self):
         strength = 4
-        for i in range(1,self.lvl_p):
+        for i in range(1, self.lvl_p):
             if i < 20:
                 strength += 1
         return strength
