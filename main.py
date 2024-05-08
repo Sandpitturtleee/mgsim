@@ -1,4 +1,7 @@
+from src.Items.one_handed import OneHanded
+from src.Items.quivers import Quivers
 from src.Items.rings import Rings
+from src.Items.staffs import Staffs
 from src.Player.blade_dancer import BladeDancer
 from src.Player.hunter import Hunter
 from src.Player.mage import Mage
@@ -25,6 +28,18 @@ if __name__ == "__main__":
     # print()
     # print(f"Tancerz: {vars(bd1)}")
     # print()
+    #
+    # r1 = Rings(lvl=40, rarity_lvl=3)
+    # print(f"Pierścień: {vars(r1)}")
+    we1 = Staffs(lvl=40, player = "hunter", damage_type="fire", rarity_factor=2)
+    print(f"Staff: {vars(we1)}")
+    print()
 
-    r1 = Rings(lvl=40, rarity_lvl=3)
-    print(f"Pierścień: {vars(r1)}")
+    we2 = OneHanded(lvl=40, player = "paladin",damage_type="normal+frost", rarity_factor=2)
+    print(f"Onehanded: {vars(we2)}")
+    print()
+
+
+    we2 = Quivers(lvl=40, player = "hunter",damage_type="normal", rarity_factor=2)
+    print(f"Quiver: {vars(we2)}")
+    print()

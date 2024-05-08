@@ -3,14 +3,14 @@ from src.Items.item import Item
 from src.Items.weapons import Weapons
 
 
-class TwoHanded(Weapons, ABC):
+class OneAndAHalfHanded(Weapons, ABC):
     weapon_factor = {
-        "normal": [0.5578],
-        "normal+wounds": [0.4606, 0.1530],
-        "normal+poison": [0.4606, 0.0797],
-        "normal+fire": [0.4876, 0.2390],
-        "normal+frost": [0.4876, 0.2152],
-        "normal+thunder": [0.4876, 0.2391],
+        "normal": [0.3964],
+        "normal+wounds": [0.3267, 0.1084],
+        "normal+poison": [0.3267, 0.0797],
+        "normal+fire": [0.4016, 0.2072],
+        "normal+frost": [0.4016, 0.1865],
+        "normal+thunder": [0.4016, 0.2072],
     }
     damage_dispersion = {
         "normal": [0.1],

@@ -5,8 +5,9 @@ from abc import ABC, abstractmethod
 
 
 class Item(ABC):
-    def __init__(self, lvl: int, rarity_factor: int):
+    def __init__(self, lvl: int, player: str, damage_type: str, rarity_factor: int):
         self.lvl = lvl
+        self.player = player
         self.rarity_factor = rarity_factor  # 0,1,2,3,4
         self.lvl_power = self.calculate_lvl_power()
         self.rarity_power = self.calculate_rarity_power()
