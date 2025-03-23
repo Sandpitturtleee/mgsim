@@ -4,14 +4,14 @@ from src.character.character import Character
 
 class Tracker(Character, ABC):
     """
-        A class representing a tracker character class.
-        Tropiciel
+    A class representing a tracker character class.
+    Tropiciel
 
-        Attributes:
-            character_lvl (int): Lvl of a character.
-            enemy_lvl (int): Lvl of an enemy.
-            character_attributes (dict): Attributes of a character
-        """
+    Attributes:
+        character_lvl (int): Lvl of a character.
+        enemy_lvl (int): Lvl of an enemy.
+        character_attributes (dict): Attributes of a character
+    """
 
     def __init__(self, character_lvl: int, enemy_lvl: int):
         super().__init__(character_lvl=character_lvl, enemy_lvl=enemy_lvl)
@@ -19,12 +19,12 @@ class Tracker(Character, ABC):
 
     def calculate_attributes_lvl(self) -> dict:
         """
-            Calculates warrior class character attributes.
-            Nawigacja: Atrybuty Podstawowe -> Poziom postaci
+        Calculates warrior class character attributes.
+        Nawigacja: Atrybuty Podstawowe -> Poziom postaci
 
-            Returns:
-                dict: Attributes.
-            """
+        Returns:
+            dict: Attributes.
+        """
         strength = self.calculate_strength()
         agility = self.calculate_agility()
         intellect = self.calculate_intellect()
@@ -32,11 +32,11 @@ class Tracker(Character, ABC):
 
     def calculate_strength(self) -> int:
         """
-            Calculates strength attribute for a tracker character class.
+        Calculates strength attribute for a tracker character class.
 
-            Returns:
-                int: Strength.
-            """
+        Returns:
+            int: Strength.
+        """
         strength = 4
         for i in range(1, self.character_lvl):
             if i < 20:
@@ -45,11 +45,11 @@ class Tracker(Character, ABC):
 
     def calculate_agility(self) -> int:
         """
-            Calculates agility attribute for a tracker character class.
+        Calculates agility attribute for a tracker character class.
 
-            Returns:
-                int: Agility.
-            """
+        Returns:
+            int: Agility.
+        """
         agility = 3
         for i in range(1, self.character_lvl):
             if i < 20:
@@ -60,11 +60,11 @@ class Tracker(Character, ABC):
 
     def calculate_intellect(self) -> int:
         """
-            Calculates intellect attribute for a tracker character class.
+        Calculates intellect attribute for a tracker character class.
 
-            Returns:
-                int: Intellect.
-            """
+        Returns:
+            int: Intellect.
+        """
         intellect = 3
         for i in range(1, self.character_lvl):
             if i < 20:

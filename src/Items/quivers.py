@@ -24,10 +24,9 @@ class Quivers(Weapons, ABC):
         "poison": [0.0044625],
     }
 
-    def __init__(self, lvl,player, damage_type, rarity_factor):
-        super().__init__(lvl, player,damage_type, rarity_factor)
+    def __init__(self, lvl, player, damage_type, rarity_factor):
+        super().__init__(lvl, player, damage_type, rarity_factor)
         self.armor_destruction = self.calculate_armor_destruction()
-
 
     def calculate_armor_destruction(self):
         if self.player == "hunter":

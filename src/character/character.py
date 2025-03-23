@@ -12,25 +12,43 @@ class Character(ABC):
         self.character_lvl = character_lvl  # character
         self.enemy_lvl = enemy_lvl  # przeciwnik
         self.hp_lvl = self.calculate_hp_lvl()
-        self.character_attributes_lvl = self.calculate_attributes_lvl()  # sila zreczonsc intelekt
+        self.character_attributes_lvl = (
+            self.calculate_attributes_lvl()
+        )  # sila zreczonsc intelekt
         self.crit_lvl = self.calculate_crit_lvl()  # crit
         self.crit_gain_lvl = self.calculate_crit_gain_lvl()  # crit gain
-        self.crit_val_gain_lvl = self.calculate_crit_val_gain_lvl()  # sila ciosu krytycznego magicznego/fizycznego
+        self.crit_val_gain_lvl = (
+            self.calculate_crit_val_gain_lvl()
+        )  # sila ciosu krytycznego magicznego/fizycznego
         # Siła
         self.hp_gain_strength = self.calculate_hp_gain_strength()  # hp z siły
-        self.hp_gain_armor_strength = self.calculate_hp_gain_armor_strength()  # hp z zbrojki
+        self.hp_gain_armor_strength = (
+            self.calculate_hp_gain_armor_strength()
+        )  # hp z zbrojki
         self.hp_bon_strength = self.calculate_hp_bon_strength()  # hp z umek
-        self.crit_val_gain_strength = self.calculate_crit_val_gain_strength()  # siła kryta fiz
+        self.crit_val_gain_strength = (
+            self.calculate_crit_val_gain_strength()
+        )  # siła kryta fiz
         self.dmg_gain_strength = self.calculate_dmg_gain_strength()  # wzrost dmg z siły
         # Intelekt
-        self.absorb_limit_intellect = self.calculate_absorb_limit_intellect()  # limit punktów absorbcji
-        self.crit_m_val_gain_intellect = self.calculate_crit_m_val_gain_intellect()  # siła kryta mag
+        self.absorb_limit_intellect = (
+            self.calculate_absorb_limit_intellect()
+        )  # limit punktów absorbcji
+        self.crit_m_val_gain_intellect = (
+            self.calculate_crit_m_val_gain_intellect()
+        )  # siła kryta mag
         self.mana_intellect = self.calculate_mana_intellect()  # mana
-        self.dmg_gain_intellect = self.calculate_dmg_gain_intellect()  # wzrost dmg z intelektu
+        self.dmg_gain_intellect = (
+            self.calculate_dmg_gain_intellect()
+        )  # wzrost dmg z intelektu
         # Zręcznosc
         self.sa_agility = self.calculate_sa_agility()  # sa z zrecznosci
-        self.evade_gain_agility = self.calculate_evade_gain_agility()  # unik z zrecznosci
-        self.dmg_gain_agility = self.calculate_dmg_gain_agility()  # wzrost dmg z zrecznosci
+        self.evade_gain_agility = (
+            self.calculate_evade_gain_agility()
+        )  # unik z zrecznosci
+        self.dmg_gain_agility = (
+            self.calculate_dmg_gain_agility()
+        )  # wzrost dmg z zrecznosci
         # Zycie
         self.hp = 20  # bazowe hp
         # Szybkość ataku
@@ -48,11 +66,21 @@ class Character(ABC):
         # Mana
         self.mana = 0  # TODO z eqwipunku umki
         # Siła ciosu krytycznego
-        self.crit_val = 120 + self.crit_val_gain_lvl + self.crit_val_gain_strength  # TODO z eqwipunku umki
-        self.crit_m_val_fire = 120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect  # TODO z eqwipunku umki
-        self.crit_m_val_frost = 120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect  # TODO z eqwipunku umki
-        self.crit_m_val_light = 120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect  # TODO z eqwipunku umki
-        self.of_crit_val = 120 + self.crit_val_gain_lvl + self.crit_val_gain_strength  # TODO z eqwipunku umki
+        self.crit_val = (
+            120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
+        )  # TODO z eqwipunku umki
+        self.crit_m_val_fire = (
+            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        )  # TODO z eqwipunku umki
+        self.crit_m_val_frost = (
+            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        )  # TODO z eqwipunku umki
+        self.crit_m_val_light = (
+            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        )  # TODO z eqwipunku umki
+        self.of_crit_val = (
+            120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
+        )  # TODO z eqwipunku umki
 
         ###### Typy redukcji obrażen #####
         # Pancerz
@@ -87,25 +115,25 @@ class Character(ABC):
         self.mana_fatigue = 0
 
         ###### Regularne zdarzenia losowe #####
-        #Cios krytyczny
+        # Cios krytyczny
         self.crit = 0
         self.of_crit = 0
-        #Przebicie pancerza
+        # Przebicie pancerza
         self.pierce = 0
-        #Głęboka rana
+        # Głęboka rana
         self.wound0 = 0
         self.of_wound0 = 0
-        #Unik
+        # Unik
         self.evade = 0
-        #Blok
+        # Blok
         self.block = 0
-        #Blok przebicia
+        # Blok przebicia
         self.pierce_b = 0
-        #Kontra
+        # Kontra
         self.contra = 0
-        #Stun
+        # Stun
         self.stun = 0
-        #TODO wszystko wyżej
+        # TODO wszystko wyżej
 
     def calculate_hp_lvl(self):
         return 20 * min(self.character_lvl, 300) ** 1.375
@@ -120,17 +148,17 @@ class Character(ABC):
     def calculate_crit_gain_lvl(self):
         # min in documentation max makes sense
         return (
-                numpy.sign(self.character_lvl - self.enemy_lvl)
-                * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
-                * 3
+            numpy.sign(self.character_lvl - self.enemy_lvl)
+            * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
+            * 3
         )
 
     def calculate_crit_val_gain_lvl(self):
         # min in documentation max makes sense
         return (
-                numpy.sign(self.character_lvl - self.enemy_lvl)
-                * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
-                * 10
+            numpy.sign(self.character_lvl - self.enemy_lvl)
+            * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
+            * 10
         )
 
     def calculate_hp_gain_strength(self):
@@ -145,7 +173,9 @@ class Character(ABC):
         return 0
 
     def calculate_crit_val_gain_strength(self):
-        return self.character_attributes_lvl["strength"] / (0.5 * min(self.character_lvl, 300))
+        return self.character_attributes_lvl["strength"] / (
+            0.5 * min(self.character_lvl, 300)
+        )
 
     def calculate_dmg_gain_strength(self):
         # TODO with skills
@@ -155,7 +185,9 @@ class Character(ABC):
         return self.character_attributes_lvl["intellect"] * 7
 
     def calculate_crit_m_val_gain_intellect(self):
-        return self.character_attributes_lvl["intellect"] / (0.5 * min(self.character_lvl, 300))
+        return self.character_attributes_lvl["intellect"] / (
+            0.5 * min(self.character_lvl, 300)
+        )
 
     def calculate_mana_intellect(self):
         # TODO with skills
@@ -166,8 +198,9 @@ class Character(ABC):
         return 0
 
     def calculate_sa_agility(self):
-        return min(2, 0.02 * self.character_attributes_lvl["agility"]) + max(0, 0.002 * (
-                self.character_attributes_lvl["agility"] - 100))
+        return min(2, 0.02 * self.character_attributes_lvl["agility"]) + max(
+            0, 0.002 * (self.character_attributes_lvl["agility"] - 100)
+        )
 
     def calculate_evade_gain_agility(self):
         return self.character_attributes_lvl["agility"] / 30

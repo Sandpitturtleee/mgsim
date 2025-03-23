@@ -25,5 +25,6 @@ class Ranged(Weapons, ABC):
         "frost": [0.0073529],
         "poison": [0.0044625],
     }
+
     def __init__(self, lvl, damage_type, rarity_factor):
         super().__init__(lvl, damage_type, rarity_factor)

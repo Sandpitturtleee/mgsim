@@ -28,7 +28,7 @@ class Mage(Character, ABC):
         strength = self.calculate_strength()
         agility = self.calculate_agility()
         intellect = self.calculate_intellect()
-        return {"strength": strength, "agility": agility,"intellect": intellect}
+        return {"strength": strength, "agility": agility, "intellect": intellect}
 
     def calculate_strength(self) -> int:
         """
@@ -70,4 +70,3 @@ class Mage(Character, ABC):
             else:
                 intellect += 5
         return intellect
-

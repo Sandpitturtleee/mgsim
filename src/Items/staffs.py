@@ -18,5 +18,5 @@ class Staffs(Weapons, ABC):
         "frost": [0.010000],
     }
 
-    def __init__(self, lvl, player,damage_type, rarity_factor):
+    def __init__(self, lvl, player, damage_type, rarity_factor):
         super().__init__(lvl, player, damage_type, rarity_factor)

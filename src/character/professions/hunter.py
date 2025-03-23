@@ -28,7 +28,7 @@ class Hunter(Character, ABC):
         strength = self.calculate_strength()
         agility = self.calculate_agility()
         intellect = self.calculate_intellect()
-        return {"strength": strength, "agility": agility,"intellect": intellect}
+        return {"strength": strength, "agility": agility, "intellect": intellect}
 
     def calculate_strength(self) -> int:
         """
@@ -67,4 +67,3 @@ class Hunter(Character, ABC):
         """
         intellect = 3
         return intellect
-

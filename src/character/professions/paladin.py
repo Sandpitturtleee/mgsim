@@ -28,7 +28,7 @@ class Paladin(Character, ABC):
         strength = self.calculate_strength()
         agility = self.calculate_agility()
         intellect = self.calculate_intellect()
-        return {"strength": strength, "agility": agility,"intellect": intellect}
+        return {"strength": strength, "agility": agility, "intellect": intellect}
 
     def calculate_strength(self) -> int:
         """
