@@ -10,7 +10,7 @@ class Tracker(Character, ABC):
     Attributes:
         character_lvl (int): Lvl of a character.
         enemy_lvl (int): Lvl of an enemy.
-        character_attributes (dict): Attributes of a character
+        character_attributes_lvl (dict): Attributes of a character
     """
 
     def __init__(self, character_lvl: int, enemy_lvl: int):
