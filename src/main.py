@@ -6,7 +6,7 @@ if __name__ == "__main__":
     # w1 = Warrior(character_lvl=53, enemy_lvl=53)
     # t1 = Tracker(character_lvl=53, enemy_lvl=53)
     # p1 = Paladin(character_lvl=53, enemy_lvl=53)
-    bd1 = BladeDancer(character_lvl=53, enemy_lvl=53)
+    #bd1 = BladeDancer(character_lvl=53, enemy_lvl=53)
     # print(f"Mag: {vars(m1)}")
     # print()
     # print(f"Pal: {vars(p1)}")
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # print(f"Łowca: {vars(h1)}")
 
     # print()
-    print(f"Tancerz: {vars(bd1)}")
+    #print(f"Tancerz: {vars(bd1)}")
     # print()
     #
     # r1 = Rings(lvl=40, rarity_lvl=3)
@@ -35,3 +35,8 @@ if __name__ == "__main__":
     # we2 = Quivers(lvl=40, player = "hunter",damage_type="normal", rarity_factor=2)
     # print(f"Quiver: {vars(we2)}")
     # print()
+
+    bd1 = BladeDancer(character_lvl=53, enemy_lvl=53)
+    print(f"Tancerz: {vars(bd1)}")
+
+

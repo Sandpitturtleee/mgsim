@@ -1,25 +1,19 @@
 import numpy as numpy
 from abc import ABC, abstractmethod
 
+from src.character.character_attributes.base_attributes.base_attributes import BaseAttributes
+
 
 # TODO check character stats with in-game data for all professions
 class Character(ABC):
     def __init__(self, character_lvl: int, enemy_lvl: int):
-        ###### Atrybuty podstawowe #####
-        # Profesja
-        self.profession = self.__class__.__name__  # profesja
-        # Poziom postaci
-        self.character_lvl = character_lvl  # character
-        self.enemy_lvl = enemy_lvl  # przeciwnik
-        self.hp_lvl = self.calculate_hp_lvl()
-        self.character_attributes_lvl = (
-            self.calculate_attributes_lvl()
-        )  # sila zreczonsc intelekt
-        self.crit_lvl = self.calculate_crit_lvl()  # crit
-        self.crit_gain_lvl = self.calculate_crit_gain_lvl()  # crit gain
-        self.crit_val_gain_lvl = (
-            self.calculate_crit_val_gain_lvl()
-        )  # sila ciosu krytycznego magicznego/fizycznego
+        # ###### Atrybuty podstawowe #####
+        self.base_attributes = BaseAttributes(character_lvl=character_lvl, enemy_lvl=enemy_lvl)
+
+        #Placeholder example
+        self.lvl_attributes = self.base_attributes.lvl_attributes  # Shortcut to LvlAttributes
+        print(f"Character Level: {self.lvl_attributes.character_attributes_lvl}")
+
         # Siła
         self.hp_gain_strength = self.calculate_hp_gain_strength()  # hp z siły
         self.hp_gain_armor_strength = (
@@ -49,6 +43,7 @@ class Character(ABC):
         self.dmg_gain_agility = (
             self.calculate_dmg_gain_agility()
         )  # wzrost dmg z zrecznosci
+
         # Zycie
         self.hp = 20  # bazowe hp
         # Szybkość ataku
@@ -135,34 +130,8 @@ class Character(ABC):
         self.stun = 0
         # TODO wszystko wyżej
 
-    def calculate_hp_lvl(self):
-        return 20 * min(self.character_lvl, 300) ** 1.375
-
-    @abstractmethod
-    def calculate_attributes_lvl(self):
-        pass
-
-    def calculate_crit_lvl(self):
-        return 1 + 0.02 * self.enemy_lvl
-
-    def calculate_crit_gain_lvl(self):
-        # min in documentation max makes sense
-        return (
-            numpy.sign(self.character_lvl - self.enemy_lvl)
-            * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
-            * 3
-        )
-
-    def calculate_crit_val_gain_lvl(self):
-        # min in documentation max makes sense
-        return (
-            numpy.sign(self.character_lvl - self.enemy_lvl)
-            * max(abs(self.character_lvl - self.enemy_lvl) - 5, 0)
-            * 10
-        )
-
     def calculate_hp_gain_strength(self):
-        return self.character_attributes_lvl["strength"] * 5
+        return self.base_attributes.lvl_attributes.character_attributes_lvl * 5
 
     def calculate_hp_gain_armor_strength(self):
         # TODO with items

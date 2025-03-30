@@ -1,8 +1,9 @@
 from abc import ABC
 from src.character.character import Character
+from src.character.character_attributes.base_attributes.lvl_attributes import LvlAttributes
 
 
-class BladeDancer(Character, ABC):
+class BladeDancer(LvlAttributes, ABC):
     """
     A class representing a blade dancer character class.
     Tancerz ostrzy
