@@ -7,6 +7,8 @@ from src.character.character_attributes.base_attributes.base_attributes import B
 # TODO check character stats with in-game data for all professions
 class Character(ABC):
     def __init__(self, character_lvl: int, enemy_lvl: int):
+        self.character_lvl = character_lvl
+        self.enemy_lvl = enemy_lvl
         # ###### Atrybuty podstawowe #####
         self.base_attributes = BaseAttributes(character_lvl=character_lvl, enemy_lvl=enemy_lvl)
 
@@ -14,68 +16,68 @@ class Character(ABC):
         self.lvl_attributes = self.base_attributes.lvl_attributes  # Shortcut to LvlAttributes
         print(f"Character Level: {self.lvl_attributes.character_attributes_lvl}")
 
-        # Siła
-        self.hp_gain_strength = self.calculate_hp_gain_strength()  # hp z siły
-        self.hp_gain_armor_strength = (
-            self.calculate_hp_gain_armor_strength()
-        )  # hp z zbrojki
-        self.hp_bon_strength = self.calculate_hp_bon_strength()  # hp z umek
-        self.crit_val_gain_strength = (
-            self.calculate_crit_val_gain_strength()
-        )  # siła kryta fiz
-        self.dmg_gain_strength = self.calculate_dmg_gain_strength()  # wzrost dmg z siły
-        # Intelekt
-        self.absorb_limit_intellect = (
-            self.calculate_absorb_limit_intellect()
-        )  # limit punktów absorbcji
-        self.crit_m_val_gain_intellect = (
-            self.calculate_crit_m_val_gain_intellect()
-        )  # siła kryta mag
-        self.mana_intellect = self.calculate_mana_intellect()  # mana
-        self.dmg_gain_intellect = (
-            self.calculate_dmg_gain_intellect()
-        )  # wzrost dmg z intelektu
-        # Zręcznosc
-        self.sa_agility = self.calculate_sa_agility()  # sa z zrecznosci
-        self.evade_gain_agility = (
-            self.calculate_evade_gain_agility()
-        )  # unik z zrecznosci
-        self.dmg_gain_agility = (
-            self.calculate_dmg_gain_agility()
-        )  # wzrost dmg z zrecznosci
-
-        # Zycie
-        self.hp = 20  # bazowe hp
-        # Szybkość ataku
-        self.at = self.calculate_at()  # szybkosc ataku do tur
-        # Obniżanie szybkości ataku przeciwnika
-        self.slow = 0  # TODO z eqwipunku umki
-        # Spowolnienie
-        self.poison0 = 0  # TODO z eqwipunku umki
-        self.of_poison0 = 0  # TODO z eqwipunku umki
-        self.frost0 = 0  # TODO z eqwipunku umki
-        # Leczenie
-        self.heal = 0  # TODO z eqwipunku umki
-        # Energia
-        self.energy = 0  # TODO z eqwipunku umki
-        # Mana
-        self.mana = 0  # TODO z eqwipunku umki
-        # Siła ciosu krytycznego
-        self.crit_val = (
-            120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
-        )  # TODO z eqwipunku umki
-        self.crit_m_val_fire = (
-            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
-        )  # TODO z eqwipunku umki
-        self.crit_m_val_frost = (
-            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
-        )  # TODO z eqwipunku umki
-        self.crit_m_val_light = (
-            120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
-        )  # TODO z eqwipunku umki
-        self.of_crit_val = (
-            120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
-        )  # TODO z eqwipunku umki
+        # # Siła
+        # self.hp_gain_strength = self.calculate_hp_gain_strength()  # hp z siły
+        # self.hp_gain_armor_strength = (
+        #     self.calculate_hp_gain_armor_strength()
+        # )  # hp z zbrojki
+        # self.hp_bon_strength = self.calculate_hp_bon_strength()  # hp z umek
+        # self.crit_val_gain_strength = (
+        #     self.calculate_crit_val_gain_strength()
+        # )  # siła kryta fiz
+        # self.dmg_gain_strength = self.calculate_dmg_gain_strength()  # wzrost dmg z siły
+        # # Intelekt
+        # self.absorb_limit_intellect = (
+        #     self.calculate_absorb_limit_intellect()
+        # )  # limit punktów absorbcji
+        # self.crit_m_val_gain_intellect = (
+        #     self.calculate_crit_m_val_gain_intellect()
+        # )  # siła kryta mag
+        # self.mana_intellect = self.calculate_mana_intellect()  # mana
+        # self.dmg_gain_intellect = (
+        #     self.calculate_dmg_gain_intellect()
+        # )  # wzrost dmg z intelektu
+        # # Zręcznosc
+        # self.sa_agility = self.calculate_sa_agility()  # sa z zrecznosci
+        # self.evade_gain_agility = (
+        #     self.calculate_evade_gain_agility()
+        # )  # unik z zrecznosci
+        # self.dmg_gain_agility = (
+        #     self.calculate_dmg_gain_agility()
+        # )  # wzrost dmg z zrecznosci
+        #
+        # # Zycie
+        # self.hp = 20  # bazowe hp
+        # # Szybkość ataku
+        # self.at = self.calculate_at()  # szybkosc ataku do tur
+        # # Obniżanie szybkości ataku przeciwnika
+        # self.slow = 0  # TODO z eqwipunku umki
+        # # Spowolnienie
+        # self.poison0 = 0  # TODO z eqwipunku umki
+        # self.of_poison0 = 0  # TODO z eqwipunku umki
+        # self.frost0 = 0  # TODO z eqwipunku umki
+        # # Leczenie
+        # self.heal = 0  # TODO z eqwipunku umki
+        # # Energia
+        # self.energy = 0  # TODO z eqwipunku umki
+        # # Mana
+        # self.mana = 0  # TODO z eqwipunku umki
+        # # Siła ciosu krytycznego
+        # self.crit_val = (
+        #     120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
+        # )  # TODO z eqwipunku umki
+        # self.crit_m_val_fire = (
+        #     120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        # )  # TODO z eqwipunku umki
+        # self.crit_m_val_frost = (
+        #     120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        # )  # TODO z eqwipunku umki
+        # self.crit_m_val_light = (
+        #     120 + self.crit_val_gain_lvl + self.crit_m_val_gain_intellect
+        # )  # TODO z eqwipunku umki
+        # self.of_crit_val = (
+        #     120 + self.crit_val_gain_lvl + self.crit_val_gain_strength
+        # )  # TODO z eqwipunku umki
 
         ###### Typy redukcji obrażen #####
         # Pancerz
